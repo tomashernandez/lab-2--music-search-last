@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import TopArtists from "../../components/TopArtists";
+
 const artists = [
   {
     id: "83d91898-7763-47d7-b03b-b92132375c47",
@@ -18,13 +20,9 @@ const artists = [
 export default class Home extends Component {
   render() {
     return (
-      <ul>
-        {artists.map(artist => (
-          <li key={artist.key}>
-            <a href={`/artists/${artist.id}`}>{artist.name}</a>
-          </li>
-        ))}
-      </ul>
+      <React.Fragment>
+        <TopArtists topArtists={artists} />
+      </React.Fragment>
     );
   }
 }

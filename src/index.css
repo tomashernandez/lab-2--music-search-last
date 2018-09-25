@@ -171,3 +171,7 @@ h5 {
 .img-fluid {
   width: 100%;
 }
+
+.artistsList li {
+  list-style: none;
+}
