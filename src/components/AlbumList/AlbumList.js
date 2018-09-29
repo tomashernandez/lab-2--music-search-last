@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import AlbumCard from "../AlbumCard";
+import { Link } from "react-router-dom";
 
 class AlbumList extends Component {
   generarListaAlbumnes = () => {
     return this.props.albums.map(album => {
       return (
         <li key={album.id}>
-          <a href={`/albums/${album.id}`}>
+          <Link to={`/albums/${album.id}`}>
             <AlbumCard album={album} />
-          </a>
+          </Link>
         </li>
       );
     });
