@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 import "./Header.css";
+
 import Logo from "../Logo";
-// import { PLAYLIST_ID } from "../../constants";
+import svgPlayList from "../../assets/img/playlist.svg";
+import { PLAYLIST_ID } from "../../constants";
 
 export default class Header extends Component {
   render() {
@@ -13,7 +16,15 @@ export default class Header extends Component {
             <Logo />
           </a>
 
-          {/* <a href={`/playlists/${PLAYLIST_ID}`}>My Playlist</a> */}
+          <NavLink to={`/playlist/${PLAYLIST_ID}`}>
+            <img
+              src={svgPlayList}
+              width="50px;"
+              id="playListIcon"
+              alt="playlist"
+              title="playList"
+            />
+          </NavLink>
         </div>
       </div>
     );

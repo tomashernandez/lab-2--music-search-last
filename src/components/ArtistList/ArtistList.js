@@ -15,7 +15,11 @@ class ArtistList extends Component {
   };
 
   render() {
-    return <ul className="artistsList">{this.generarLista()}</ul>;
+    return (
+      <React.Fragment>
+        <ul className="artistsList no-style">{this.generarLista()}</ul>
+      </React.Fragment>
+    );
   }
 }
 

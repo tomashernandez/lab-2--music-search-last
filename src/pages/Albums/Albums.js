@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import * as API from "../../services/react-api-music";
-import ArtistCard from "../../components/ArtistCard";
-import AlbumList from "../../components/AlbumList";
 import Loader from "../../components/Loader";
+import AlbumCard from "../../components/AlbumCard";
+import TrackList from "../../components/TrackList";
 
-export default class Artists extends Component {
-  //recibir id
+class Albums extends Component {
   state = {
     error: false,
-    artist: null,
+    album: null,
     loading: true
   };
 
-  getArtist = idArtist => {
+  getAlbum = idAlbum => {
     this.setState({
       loading: true,
       error: null
     });
-    return API.getArtist(idArtist)
+    return API.getAlbum(idAlbum)
       .then(data => {
         this.setState({
           loading: false,
-          artist: data.data
+          album: data.data
         });
       })
       .catch(error => {
@@ -33,30 +32,30 @@ export default class Artists extends Component {
   };
 
   componentDidMount() {
-    let idArtist = this.props.match.params.artistId;
-    this.getArtist(idArtist);
+    let albumId = this.props.match.params.albumId;
+    this.getAlbum(albumId);
   }
 
   render() {
-    const { loading, artist, error } = this.state;
+    const { loading, album, error } = this.state;
 
     return (
       <React.Fragment>
         {loading && <Loader />}
 
         {!loading &&
-          artist && (
+          album && (
             <React.Fragment>
-              <h2>Artist</h2>
-              <ArtistCard artist={artist} detail />
+              <h2>Album</h2>
+              <AlbumCard album={album} artist />
               <hr />
-              <h3>{`-- Albums List --`}</h3>
-              <AlbumList albums={artist.albums} />
+              <h3>{`-- TrackList --`}</h3>
+              <TrackList tracks={album.tracks} />
             </React.Fragment>
           )}
-
         {error && <p>{error.message}</p>}
       </React.Fragment>
     );
   }
 }
+export default Albums;
