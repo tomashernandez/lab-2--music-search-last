@@ -60,7 +60,7 @@ export default class PlayList extends Component {
             <React.Fragment>
               {<h3>{`${playlistId} -- PLAYLIST`}</h3>}
 
-              <TrackList tracks={list} noAdd={false} />
+              <TrackList tracks={list} noAdd />
             </React.Fragment>
           )}
         {error && <p>{error.message}</p>}

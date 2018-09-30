@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PlayListAdd from "../../assets/img/playlistAdd.svg";
+import PlayListRemove from "../../assets/img/fileRemove.svg";
 
 class TrackCard extends Component {
   state = {
@@ -9,7 +10,10 @@ class TrackCard extends Component {
   };
 
   render() {
-    const { track, add } = this.props;
+    const { track, add, loading } = this.props;
+    const titleAction = add ? "Add to PlayList" : "Remove from PlayList";
+    const altAction = add ? "Add" : "Remove";
+    const imgIcon = add ? PlayListAdd : PlayListRemove;
 
     return (
       <div className="row">
@@ -24,21 +28,21 @@ class TrackCard extends Component {
           </h4>
         </div>
         <div className="col-8">
-          {add && (
+          {
             <a
               className="link"
               data-data={track.trackNumber}
               onClick={this.props.handleClickButton}
             >
               <img
-                src={PlayListAdd}
+                src={imgIcon}
                 width="26px"
-                alt="add"
-                title="Add to PlayList"
+                alt={altAction}
+                title={titleAction}
               />{" "}
-              Add to PlayList
+              {titleAction}
             </a>
-          )}
+          }
         </div>
       </div>
     );

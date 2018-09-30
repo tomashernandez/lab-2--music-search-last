@@ -28,13 +28,11 @@ export const getSearchArtist = searchArtist => {
 };
 //post playList
 export const postPlayList = (idPlayList, track) => {
-  fetch(`${apiURL}playlists/${idPlayList}`, {
+  return fetch(`${apiURL}playlists/${idPlayList}`, {
     method: "post",
     body: track,
     headers: {
       "Content-Type": "application/json"
     }
-  }).then(response => {
-    console.log(response);
   });
 };
